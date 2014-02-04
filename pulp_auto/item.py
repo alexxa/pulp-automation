@@ -74,8 +74,8 @@ class Item(HasData):
             self.request('PUT', data=delta)
         )
 
-    def request(self, method, path='', data={}):
-        return Request(method, data=data, path=path_join(self.path, self.id, path))
+    def request(self, method, path='', data={}, headers={'Content-Type': 'application/json'}):
+        return Request(method, data=data, path=path_join(self.path, self.id, path), headers=headers)
 
 
 class AssociatedItem(Item):
